@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+
 @WebServlet("/viewServlet")
 public class ViewServlet extends HttpServlet {
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

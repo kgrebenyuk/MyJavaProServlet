@@ -1,0 +1,16 @@
+/.idea/.gitignore
+/servletApp-master/.gitignore
+/servletApp-master/build.bat
+/.idea/compiler.xml
+/servletApp-master/deploy-wildfly.bat
+/servletApp-master/initial.sql
+/.idea/jarRepositories.xml
+/.idea/libraries/Maven__javax_mvc_javax_mvc_api_1_0_0.xml
+/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml
+/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml
+/.idea/libraries/Maven__org_postgresql_postgresql_42_2_21.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/servletApp-master.iml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml

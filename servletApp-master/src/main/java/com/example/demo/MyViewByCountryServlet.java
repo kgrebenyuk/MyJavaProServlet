@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/viewByCountryServlet")
+@WebServlet("/myViewByCountryServlet")
 public class MyViewByCountryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");

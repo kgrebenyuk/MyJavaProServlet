@@ -162,21 +162,12 @@ public class EmployeeRepository {
             PreparedStatement ps = connection.prepareStatement("select * from users");
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            while (rs.next())
+                listEmployees.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 
-                Employee employee = new Employee();
-
-                employee.setId(rs.getInt(1));
-                employee.setName(rs.getString(2));
-                employee.setEmail(rs.getString(3));
-                employee.setCountry(rs.getString(4));
-
-                listEmployees.add(employee);
-            }
             connection.close();
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("getAllEmployees is Nok");
         }
         return listEmployees;
     }

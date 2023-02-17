@@ -14,28 +14,42 @@ public class AuthenticationFilter implements Filter {
     private ServletContext context;
 
     public void init(FilterConfig fConfig) throws ServletException {
-        this.context = fConfig.getServletContext();
-        this.context.log(">>> AuthenticationFilter initialized");
+        context = fConfig.getServletContext();
+        context.log(">>> AuthenticationFilter initialized");
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
+
+        PrintWriter out = res.getWriter();
         String uri = req.getRequestURI();
-
-        this.context.log("Requested Resource::http://localhost:8080" + uri);
-
         HttpSession session = req.getSession(false);
+        //       HttpSession session = req.getSession();
 
-        if (session == null && !(uri.endsWith("demo/saveServlet") || uri.endsWith("demo/loginServlet") || uri.endsWith("demo/viewServlet"))) {
-            this.context.log("<<< Unauthorized access request");
-            PrintWriter out = res.getWriter();
-            out.println("No access!!!");
-        } else {
+        context.log("Requested Resource::http://localhost:8080" + uri);
+
+
+        if (session != null)
+            out.println("session == " + session.toString() + ", user = " + session.getAttribute("user"));
+        else
+            out.println("session == null" + ", user = ");
+
+
+        if (session == null && !uri.endsWith("demo/loginServlet")) {
+            out.println("Please Login first!!! ( demo/loginServlet)");
+        } else if (session != null && uri.endsWith("demo/loginServlet")) {
+            out.println("You are already logined as " + session.getAttribute("user") + ", logout first!");
+        } else if (session != null && session.getAttribute("user").equals("user") &&
+                !(uri.endsWith("demo/logoutServlet") || uri.endsWith("demo/viewServlet") || uri.endsWith("demo/myViewByIDServlet") ||
+                        uri.endsWith("demo/myViewByCountryServlet") || uri.endsWith("demo/viewByIDServlet"))) {
+
+            context.log("<<< Not enough rights!");
+            out.println("Not enough rights!");
+        } else
             chain.doFilter(request, response);
-        }
+
     }
 
     public void destroy() {
