@@ -34,7 +34,7 @@ public class AuthenticationFilter implements Filter {
         if (session != null)
             out.println("session == " + session.toString() + ", user = " + session.getAttribute("user"));
         else
-            out.println("session == null" + ", user = ");
+            out.println("session == null");
 
 
         if (session == null && !uri.endsWith("demo/loginServlet")) {

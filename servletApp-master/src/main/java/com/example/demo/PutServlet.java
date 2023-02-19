@@ -19,7 +19,7 @@ public class PutServlet extends HttpServlet {
 
         String sid = request.getParameter("id");
         int id = Integer.parseInt(sid);
-
+        
         String name = request.getParameter("name");
         String email = request.getParameter("email");
 

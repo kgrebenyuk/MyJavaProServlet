@@ -6,23 +6,28 @@ import java.util.List;
 
 public class EmployeeRepository {
 
-    public static void main(String[] args) {
-        getConnection();
-
-        Employee employee = new Employee();
-
-        employee.setName("oleg11");
-        employee.setEmail("11 ");
-        employee.setCountry(" 111");
-        save(employee);
-    }
+//    public static void main(String[] args) {
+//        getConnection();
+//
+//        Employee employee = new Employee();
+//
+//        employee.setName("oleg11");
+//        employee.setEmail("11 ");
+//        employee.setCountry(" 111");
+//        save(employee);
+//    }
 
     public static Connection getConnection() {
 
+//        Connection connection = null;
+//        String url = "jdbc:postgresql://localhost:5432/employee";
+//        String user = "postgres";
+//        String password = "5";
+
         Connection connection = null;
-        String url = "jdbc:postgresql://localhost:5432/employee";
-        String user = "postgres";
-        String password = "5";
+        String url = "jdbc:mysql://localhost:3306/employee";
+        String user = "root";
+        String password = "kotko-1";
 
         try {
             connection = DriverManager.getConnection(url, user, password);
